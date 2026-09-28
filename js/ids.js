@@ -85,7 +85,7 @@ async function getNextId(collection) {
     const base =
         typeof API_URL === "string" && API_URL
             ? API_URL
-            : "http://localhost:3000";
+            : "https://office-backend-c183.onrender.com";
 
     const response = await fetch(`${base}/${collection}`);
 
