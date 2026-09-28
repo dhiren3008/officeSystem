@@ -1,4 +1,4 @@
-const API_URL = "https://office-backend-c183.onrender.com/users";;
+const API_URL = "https://office-backend-c183.onrender.com/users";
 
 
 // =========================
