@@ -1,0 +1,269 @@
+/* ==========================================================
+   DASHBOARD — MANAGER PROJECT CARDS
+   Manager-panel-specific project card overrides.
+   This section sat LAST in the original file (after the
+   responsive/accessibility rules), so it must load LAST here
+   too, to preserve the exact same CSS cascade order.
+   ========================================================== */
+
+/* =========================
+   Project Cards (Manager panel)
+   Rectangular grid cards with labeled title + description
+   ========================= */
+
+#projectsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 22px;
+    align-items: stretch;
+}
+
+#projectsContainer > .empty-message {
+    grid-column: 1 / -1;
+}
+
+#projectsContainer .project-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 16px;
+    min-height: 300px;
+    margin: 0;
+    padding: 22px;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+    transition: transform .25s var(--ease), box-shadow .25s ease, border-color .25s ease;
+}
+
+/* colored top bar */
+#projectsContainer .project-card::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: 5px;
+    border-radius: 0;
+    background: var(--grad-primary);
+    content: "";
+    opacity: 1;
+}
+
+/* soft corner glow */
+#projectsContainer .project-card::after {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(91, 92, 226, .12), transparent 70%);
+    content: "";
+    pointer-events: none;
+}
+
+#projectsContainer .project-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(91, 92, 226, .3);
+    box-shadow: var(--shadow-lg);
+}
+
+/* top row: project id + status */
+.project-card-top {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.project-id-tag {
+    color: var(--muted);
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: .04em;
+}
+
+/* status badge */
+.project-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 13px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: capitalize;
+    color: var(--primary-dark);
+    background: var(--primary-soft);
+}
+
+.project-status-badge::before {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    content: "";
+}
+
+.project-status-badge.planning {
+    color: #d9773a;
+    background: rgba(245, 158, 103, .16);
+}
+
+.project-status-badge.active {
+    color: var(--teal-dark);
+    background: rgba(19, 184, 166, .14);
+}
+
+.project-status-badge.completed {
+    color: var(--primary-dark);
+    background: var(--primary-soft);
+}
+
+.project-status-badge.on_hold {
+    color: #d84a5a;
+    background: rgba(239, 106, 120, .14);
+}
+
+/* title + description block */
+#projectsContainer .project-info {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+/* small uppercase labels: "PROJECT TITLE", "DESCRIPTION" */
+.project-field-label {
+    display: inline-block;
+    margin-top: 8px;
+    color: var(--primary);
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+#projectsContainer .project-info .project-field-label:first-child {
+    margin-top: 0;
+}
+
+#projectsContainer .project-info .project-title {
+    margin: 0 0 8px;
+    color: var(--ink);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    line-height: 1.25;
+    word-break: break-word;
+}
+
+/* description: max 3 lines, then "..." */
+#projectsContainer .project-info .project-description {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 13.5px;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* dates + team size box */
+#projectsContainer .project-details {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    flex-shrink: 0;
+    padding: 14px;
+    text-align: left;
+    background: var(--surface-soft);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+}
+
+.project-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.project-meta-label {
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.project-meta-value {
+    overflow: hidden;
+    color: var(--ink);
+    font-size: 12.5px;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* assigned employees as chips */
+.project-team {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.project-team .project-field-label {
+    margin-top: 0;
+}
+
+.project-member-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    max-height: 72px;
+    overflow-y: auto;
+}
+
+.project-member-chip {
+    padding: 4px 11px;
+    color: var(--primary-dark);
+    background: var(--primary-soft);
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 600;
+}
+
+.project-member-none {
+    color: var(--muted);
+    font-size: 12.5px;
+    font-style: italic;
+}
+
+@media (max-width: 680px) {
+    #projectsContainer {
+        grid-template-columns: 1fr;
+    }
+
+    #projectsContainer .project-details {
+        grid-template-columns: 1fr 1fr;
+    }
+}

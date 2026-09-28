@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Project Manager Dashboard</title>
+    <link rel="icon" type="image/png" href="/management.png">
+
+    <link rel="stylesheet" href="css/dashboard-base.css">
+    <link rel="stylesheet" href="css/dashboard-components.css">
+    <link rel="stylesheet" href="css/dashboard-domain.css">
+    <link rel="stylesheet" href="css/dashboard-custom-widgets.css">
+    <link rel="stylesheet" href="css/dashboard-layout.css">
+    <link rel="stylesheet" href="css/dashboard-manager-projects.css">
+    <link rel="stylesheet" href="css/dashboard-responsive.css">
+
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+
+        <!-- =========================
+             SIDEBAR
+        ========================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+
+                <h2>Office Management</h2>
+
+                <p>Project Manager Panel</p>
+
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+                <a href="#dashboard" class="nav-link active">
+                    Dashboard
+                </a>
+
+                <a href="#projects" class="nav-link">
+                    My Projects
+                </a>
+
+                <a href="#employees" class="nav-link">
+                    Employees
+                </a>
+
+                <a href="#tasks" class="nav-link">
+                    Tasks
+                </a>
+
+                <a href="#attendance" class="nav-link">
+                    Attendance
+                </a>
+
+                <a href="#leaves" class="nav-link">
+                    Leaves
+                </a>
+
+                <a href="#profile" class="nav-link">
+                    Profile
+                </a>
+
+                <a href="index.html" class="nav-link logout-link">
+                    Logout
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- =========================
+             MAIN CONTENT
+        ========================== -->
+
+        <main class="main-content">
+
+
+            <!-- =========================
+                 TOPBAR
+            ========================== -->
+
+            <header class="topbar">
+
+                <div>
+
+                    <h1>Project Manager Dashboard</h1>
+
+                    <p>
+                        Welcome back,
+                        <span id="managerName">
+                            Project Manager
+                        </span>
+                    </p>
+
+                </div>
+
+
+                <div class="user-info">
+
+                    <strong id="managerDisplayName">
+                        Project Manager
+                    </strong>
+
+                    <span>
+                        Project Manager
+                    </span>
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================
+                 DASHBOARD CONTENT
+            ========================== -->
+
+            <div class="dashboard-content">
+
+
+                <!-- =========================
+                     DASHBOARD
+                ========================== -->
+
+                <section id="dashboard"
+                         class="dashboard-section" style="display:block">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <h2>Dashboard Overview</h2>
+
+                            <p>
+                                Overview of your projects and team activities.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <!-- =========================
+                         STATISTICS
+                    ========================== -->
+
+                    <div class="stats-grid">
+
+
+                        <div class="stat-card">
+
+                            <h3>My Projects</h3>
+
+                            <p id="totalProjects">
+                                0
+                            </p>
+
+                        </div>
+
+
+                        <div class="stat-card">
+
+                            <h3>Team Members</h3>
+
+                            <p id="totalTeamMembers">
+                                0
+                            </p>
+
+                        </div>
+
+
+                        <div class="stat-card">
+
+                            <h3>Pending Tasks</h3>
+
+                            <p id="pendingTasks">
+                                0
+                            </p>
+
+                        </div>
+
+
+                        <div class="stat-card">
+
+                            <h3>Completed Tasks</h3>
+
+                            <p id="completedTasks">
+                                0
+                            </p>
+
+                        </div>
+
+
+                        <div class="stat-card">
+
+                            <h3>Pending Leaves</h3>
+
+                            <p id="pendingLeaves">
+                                0
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =========================
+                         DASHBOARD PREVIEWS
+                    ========================== -->
+
+                    <div class="dashboard-preview-grid">
+
+
+                        <!-- My Projects -->
+
+                        <div class="dashboard-preview-card">
+
+                            <div class="preview-header">
+
+                                <div>
+
+                                    <h3>My Projects</h3>
+
+                                    <p>
+                                        Projects assigned to you
+                                    </p>
+
+                                </div>
+
+                                <button
+                                    class="view-all-button"
+                                    data-section="projects"
+                                >
+                                    View All
+                                </button>
+
+                            </div>
+
+
+                            <div id="dashboardProjects">
+
+                                <p class="empty-message">
+                                    No projects found.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- My Team -->
+
+                        <div class="dashboard-preview-card">
+
+                            <div class="preview-header">
+
+                                <div>
+
+                                    <h3>My Team</h3>
+
+                                    <p>
+                                        Employees in your projects
+                                    </p>
+
+                                </div>
+
+                                <button
+                                    class="view-all-button"
+                                    data-section="employees"
+                                >
+                                    View All
+                                </button>
+
+                            </div>
+
+
+                            <div id="dashboardEmployees">
+
+                                <p class="empty-message">
+                                    No team members found.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Tasks -->
+
+                        <div class="dashboard-preview-card">
+
+                            <div class="preview-header">
+
+                                <div>
+
+                                    <h3>Tasks</h3>
+
+                                    <p>
+                                        Recent project tasks
+                                    </p>
+
+                                </div>
+
+                                <button
+                                    class="view-all-button"
+                                    data-section="tasks"
+                                >
+                                    View All
+                                </button>
+
+                            </div>
+
+
+                            <div id="dashboardTasks">
+
+                                <p class="empty-message">
+                                    No tasks found.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Attendance -->
+
+                        <div class="dashboard-preview-card">
+
+                            <div class="preview-header">
+
+                                <div>
+
+                                    <h3>Attendance</h3>
+
+                                    <p>
+                                        Recent team attendance
+                                    </p>
+
+                                </div>
+
+                                <button
+                                    class="view-all-button"
+                                    data-section="attendance"
+                                >
+                                    View All
+                                </button>
+
+                            </div>
+
+
+                            <div id="dashboardAttendance">
+
+                                <p class="empty-message">
+                                    No attendance records found.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Leaves -->
+
+                        <div class="dashboard-preview-card">
+
+                            <div class="preview-header">
+
+                                <div>
+
+                                    <h3>My Leaves</h3>
+
+                                    <p>
+                                        Your recent leave requests
+                                    </p>
+
+                                </div>
+
+                                <button
+                                    class="view-all-button"
+                                    data-section="leaves"
+                                >
+                                    View All
+                                </button>
+
+                            </div>
+
+
+                            <div id="dashboardLeaves">
+
+                                <p class="empty-message">
+                                    No leave requests found.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================
+                     MY PROJECTS
+                ========================== -->
+
+                <section id="projects"
+                         class="dashboard-section" style="display:none">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <h2>My Projects</h2>
+
+                            <p>
+                                View projects assigned to you by Admin
+                                and manage project employees.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="projectsContainer">
+
+                        <p class="empty-message">
+                            No projects to display.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================
+                     EMPLOYEES
+                ========================== -->
+
+                <section id="employees"
+                         class="dashboard-section" style="display:none">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <h2>Employees</h2>
+
+                            <p>
+                                View employees assigned to your projects.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="employeesContainer">
+
+                        <p class="empty-message">
+                            No employees to display.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================
+                     TASKS
+                ========================== -->
+
+                <section id="tasks"
+                         class="dashboard-section" style="display:none">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <h2>Tasks</h2>
+
+                            <p>
+                                Create and manage tasks for your projects.
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            id="addTaskButton"
+                            class="primary-button"
+                        >
+                            Add Task
+                        </button>
+
+                    </div>
+
+
+                    <!-- Task Form -->
+
+                    <div
+                        id="taskFormContainer"
+                        class="task-form-container"
+                    >
+
+                        <form id="taskForm" action="javascript:void(0);">
+
+                            <h3 id="taskFormTitle">
+                                Add Task
+                            </h3>
+
+
+                            <div class="form-grid">
+
+
+                                <!-- Task Title -->
+
+                                <div class="form-group">
+
+                                    <label for="taskTitle">
+                                        Task Title<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="taskTitle"
+                                        placeholder="Enter task title"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <!-- Description -->
+
+                                <div class="form-group">
+
+                                    <label for="taskDescription">
+                                        Description<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <textarea
+                                        id="taskDescription"
+                                        placeholder="Enter task description"
+                                        required
+                                    ></textarea>
+
+                                </div>
+
+
+                                <!-- Project -->
+
+                                <div class="form-group">
+
+                                    <label for="taskProject">
+                                        Project<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <select
+                                        id="taskProject"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Select Project
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- Employees -->
+
+                                <div class="form-group project-employees-group">
+
+                                    <label>
+                                        Assign To<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <div class="members-picker" id="taskMembersPicker">
+
+                                        <button
+                                            type="button"
+                                            class="members-picker-trigger"
+                                            id="taskMembersTrigger"
+                                        >
+                                            <span id="taskMembersLabel">
+                                                Select team members
+                                                <span class="imp_dot">*</span>
+                                            </span>
+
+                                            <svg class="custom-select-arrow" viewBox="0 0 24 24" fill="none"
+                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                            </svg>
+                                        </button>
+
+                                        <div class="members-picker-panel" id="taskMembersPanel">
+
+                                            <input
+                                                type="search"
+                                                id="taskMembersSearch"
+                                                placeholder="Search employees..."
+                                                autocomplete="off"
+                                            >
+
+                                            <div id="taskMembersList" class="members-picker-list">
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- Priority -->
+
+                                <div class="form-group">
+
+                                    <label for="taskPriority">
+                                        Priority<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <select
+                                        id="taskPriority"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Select Priority
+                                        </option>
+
+                                        <option value="low">
+                                            Low
+                                        </option>
+
+                                        <option value="medium">
+                                            Medium
+                                        </option>
+
+                                        <option value="high">
+                                            High
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- Status -->
+
+                                <div class="form-group">
+
+                                    <label for="taskStatus">
+                                        Status<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <select
+                                        id="taskStatus"
+                                        required
+                                    >
+
+                                        <option value="pending">
+                                            Pending
+                                        </option>
+
+                                        <option value="in_progress">
+                                            In Progress
+                                        </option>
+
+                                        <option value="completed">
+                                            Completed
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- Due Date -->
+
+                                <div class="form-group">
+
+                                    <label for="taskDueDate">
+                                        Due Date<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <input
+                                        type="date"
+                                        id="taskDueDate"
+                                        required
+                                    >
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-actions">
+
+                                <button
+                                    type="submit"
+                                    id="taskSubmitButton"
+                                    class="primary-button"
+                                >
+                                    Save Task
+                                </button>
+
+                                <button
+                                    type="button"
+                                    id="cancelTaskButton"
+                                    class="secondary-button"
+                                >
+                                    Cancel
+                                </button>
+
+                            </div>
+
+
+                            <p id="taskFormMessage"></p>
+
+                        </form>
+
+                    </div>
+
+
+                    <!-- Tasks List -->
+
+                    <div class="list-filter">
+                        <label for="taskStatusFilter">
+                            Status
+                        </label>
+
+                        <select id="taskStatusFilter">
+                            <option value="all" selected>
+                                All
+                            </option>
+
+                            <option value="pending">
+                                Pending
+                            </option>
+
+                            <option value="in_progress">
+                                In Progress
+                            </option>
+
+                            <option value="completed">
+                                Completed
+                            </option>
+                        </select>
+                    </div>
+
+                    <div id="tasksContainer">
+
+                        <p class="empty-message">
+                            No tasks to display.
+                        </p>
+
+                    </div>
+
+                </section>
+
+                <!-- =========================
+                    ATTENDANCE
+                ========================== -->
+
+                <section id="attendance"
+                        class="dashboard-section" style="display:none">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <h2>Attendance</h2>
+
+                            <p>
+                                Manage your attendance and view
+                                your team attendance.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =========================
+                        MY ATTENDANCE
+                    ========================== -->
+
+                    <div class="attendance-my-section">
+
+                        <h3>My Attendance</h3>
+
+
+                        <div class="attendance-actions">
+
+                            <button
+                                type="button"
+                                id="checkInButton"
+                                class="primary-button"
+                            >
+                                Check In
+                            </button>
+
+
+                            <button
+                                type="button"
+                                id="checkOutButton"
+                                class="secondary-button"
+                            >
+                                Check Out
+                            </button>
+
+                        </div>
+
+
+                        <p id="attendanceMessage"></p>
+
+                    </div>
+
+
+                    <!-- =========================
+                        TEAM ATTENDANCE
+                    ========================== -->
+
+                    <div class="attendance-records">
+
+                        <div class="attendance-records-header">
+
+                            <div>
+
+                                <h3>
+                                    Team Attendance
+                                </h3>
+
+                                <p>
+                                    View attendance of your team members.
+                                </p>
+
+                            </div>
+
+                            <div class="attendance-date-filter">
+
+                                <!-- <label for="attendanceDate">
+                                    Date
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="attendanceDate"
+                                > -->
+
+                            </div>
+
+                        </div>
+
+
+                        <div id="attendanceContainer">
+
+                            <p class="empty-message">
+                                No attendance records to display.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================
+                     LEAVES
+                ========================== -->
+
+                <section id="leaves"
+                         class="dashboard-section" style="display:none">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <h2>Leaves</h2>
+
+                            <p>
+                                Apply for leave and view your
+                                leave request status.
+                            </p>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            id="applyLeaveButton"
+                            class="primary-button"
+                        >
+                            Apply Leave
+                        </button>
+
+                    </div>
+
+
+                    <!-- Leave Form -->
+
+                    <div
+                        id="leaveFormContainer"
+                        class="employee-form-container"
+                    >
+
+                        <form id="leaveForm" action="javascript:void(0);">
+
+                            <h3>
+                                Apply for Leave
+                            </h3>
+
+
+                            <div class="form-grid">
+
+
+                                <!-- Start Date -->
+
+                                <div class="form-group">
+
+                                    <label for="leaveStartDate">
+                                        Start Date<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <input
+                                        type="date"
+                                        id="leaveStartDate"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <!-- End Date -->
+
+                                <div class="form-group">
+
+                                    <label for="leaveEndDate">
+                                        End Date<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <input
+                                        type="date"
+                                        id="leaveEndDate"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <!-- Reason -->
+
+                                <div class="form-group">
+
+                                    <label for="leaveReason">
+                                        Reason<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <textarea
+                                        id="leaveReason"
+                                        placeholder="Enter reason for leave"
+                                        required
+                                    ></textarea>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-actions">
+
+                                <button
+                                    type="submit"
+                                    id="leaveSubmitButton"
+                                    class="primary-button"
+                                >
+                                    Submit Leave
+                                </button>
+
+                                <button
+                                    type="button"
+                                    id="cancelLeaveButton"
+                                    class="secondary-button"
+                                >
+                                    Cancel
+                                </button>
+
+                            </div>
+
+
+                            <p id="leaveFormMessage"></p>
+
+                        </form>
+
+                    </div>
+
+
+                    <!-- My Leave Requests -->
+
+                    <div id="leavesContainer">
+
+                        <p class="empty-message">
+                            No leave requests found.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================
+                     PROFILE
+                ========================== -->
+
+                <section id="profile"
+                         class="dashboard-section" style="display:none">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <h2>My Profile</h2>
+
+                            <p>
+                                View your Project Manager account information.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="profileContainer" class="profile-card">
+
+                        <div class="profile-hero">
+
+                            <div class="profile-avatar" id="profileAvatar">
+                                -
+                            </div>
+
+                            <div class="profile-hero-info">
+
+                                <h3 id="profileName">
+                                    -
+                                </h3>
+
+                                <p class="profile-email" id="profileEmail">
+                                    -
+                                </p>
+
+                                <div class="profile-badges">
+
+                                    <span class="profile-role-badge" id="profileRole">
+                                        Project Manager
+                                    </span>
+
+                                    <span class="employee-status-badge active" id="profileStatus">
+                                        Active
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="profile-grid">
+
+                            <div class="profile-field">
+                                <span>Department</span>
+                                <strong id="profileDepartment">-</strong>
+                            </div>
+
+
+                            <div class="profile-field">
+                                <span>Designation</span>
+                                <strong id="profileDesignation">-</strong>
+                            </div>
+
+
+                            <div class="profile-field">
+                                <span>Phone</span>
+                                <strong id="profilePhone">-</strong>
+                            </div>
+
+
+                            <div class="profile-field">
+                                <span>Joining Date</span>
+                                <strong id="profileJoiningDate">-</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================
+         MANAGER JAVASCRIPT
+    ========================== -->
+
+    <script src="js/ids.js"></script>
+
+    <!-- Split manager.js modules — manager-core.js MUST load first, manager-init.js MUST load last -->
+    <script src="jsm/manager-core.js"></script>
+    <script src="jsm/manager-projects.js"></script>
+    <script src="jsm/manager-team.js"></script>
+    <script src="jsm/manager-tasks.js"></script>
+    <script src="jsm/manager-attendance.js"></script>
+    <script src="jsm/manager-leaves.js"></script>
+    <script src="jsm/manager-profile.js"></script>
+    <script src="jsm/manager-init.js"></script>
+
+    <script src="js/custom-select.js"></script>
+    <script src="js/custom-date.js"></script>
+    <script src="js/date-restrictions.js"></script>
+
+</body>
+
+</html>

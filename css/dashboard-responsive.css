@@ -1,0 +1,191 @@
+/* ==========================================================
+   DASHBOARD — RESPONSIVE & ACCESSIBILITY
+   Media-query overrides + accessibility rules. These override
+   earlier component/domain styles, so this file must load
+   AFTER dashboard-domain.css (but before dashboard-manager-projects.css,
+   which is last in the original file).
+   ========================================================== */
+
+/* ==========================================================
+   22. RESPONSIVE
+   ========================================================== */
+
+@media (max-width: 900px) {
+    .sidebar {
+        width: 220px;
+    }
+
+    .main-content {
+        width: calc(100% - 220px);
+        margin-left: 220px;
+    }
+
+    .topbar {
+        min-height: 108px;
+    }
+}
+
+@media (max-width: 680px) {
+    .dashboard-container {
+        display: block;
+    }
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 18px 14px 14px;
+        overflow: visible;
+    }
+
+    .sidebar-header {
+        padding: 0 8px 16px;
+    }
+
+    .sidebar-nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 5px;
+        margin-top: 14px;
+    }
+
+    .nav-link {
+        min-height: 40px;
+        padding: 0 10px;
+        font-size: 12px;
+    }
+
+    .nav-link::before {
+        margin-right: 8px;
+    }
+
+    .logout-link {
+        margin-top: 0;
+    }
+
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .topbar {
+        position: relative;
+        align-items: flex-start;
+        min-height: 0;
+        padding: 24px 20px;
+    }
+
+    .user-info {
+        display: none;
+    }
+
+    .dashboard-content {
+        padding: 25px 16px 42px;
+    }
+
+    .section-header {
+        margin-bottom: 18px;
+    }
+
+    .section-header h2 {
+        font-size: 19px;
+    }
+
+    .stats-grid {
+        gap: 12px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .stat-card {
+        padding: 18px;
+        border-radius: 14px;
+    }
+
+    .stat-card p {
+        font-size: 27px;
+    }
+
+    .dashboard-preview-grid,
+    .employee-dashboard-previews {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-item {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .profile-item span {
+        text-align: left;
+    }
+
+    .project-card,
+    .task-card,
+    .leave-card {
+        flex-direction: column;
+    }
+
+    .project-details,
+    .task-details,
+    .leave-details {
+        text-align: left;
+    }
+
+    .task-status-control {
+        justify-content: flex-start;
+    }
+
+    .attendance-time {
+        flex-direction: column;
+    }
+
+    .employee-filter,
+    .list-filter {
+        width: 100%;
+    }
+
+    button[class^="edit-"],
+    button[class^="delete-"],
+    button[class^="approve-"],
+    button[class^="reject-"] {
+        min-height: 38px;
+        padding: 0 16px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 390px) {
+    .sidebar-nav {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .topbar h1 {
+        font-size: 22px;
+    }
+}
+
+/* ==========================================================
+   23. ACCESSIBILITY
+   ========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+

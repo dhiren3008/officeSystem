@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Employee Dashboard</title>
+    <link rel="icon" type="image/png" href="/management.png">
+
+    <link rel="stylesheet" href="css/dashboard-base.css">
+    <link rel="stylesheet" href="css/dashboard-components.css">
+    <link rel="stylesheet" href="css/dashboard-domain.css">
+    <link rel="stylesheet" href="css/dashboard-custom-widgets.css">
+    <link rel="stylesheet" href="css/dashboard-layout.css">
+    <link rel="stylesheet" href="css/dashboard-manager-projects.css">
+    <link rel="stylesheet" href="css/dashboard-responsive.css">
+    
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- =========================
+             SIDEBAR
+        ========================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+
+                <h2>Office Management</h2>
+
+                <p>Employee Panel</p>
+
+            </div>
+
+
+            <nav class="sidebar-nav">
+
+                <a href="#dashboard" class="nav-link active">
+                    Dashboard
+                </a>
+
+                <a href="#projects" class="nav-link">
+                    My Projects
+                </a>
+
+                <a href="#tasks" class="nav-link">
+                    My Tasks
+                </a>
+
+                <a href="#attendance" class="nav-link">
+                    Attendance
+                </a>
+
+                <a href="#leaves" class="nav-link">
+                    Leaves
+                </a>
+
+                <a href="#profile" class="nav-link">
+                    Profile
+                </a>
+
+                <a href="index.html" class="nav-link logout-link">
+                    Logout
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- =========================
+             MAIN CONTENT
+        ========================== -->
+
+        <main class="main-content">
+
+
+            <!-- =========================
+                 TOPBAR
+            ========================== -->
+
+            <header class="topbar">
+
+                <div>
+
+                    <h1>Employee Dashboard</h1>
+
+                    <p>
+                        Welcome back,
+                        <span id="employeeName">
+                            Employee
+                        </span>
+                    </p>
+
+                </div>
+
+
+                <div class="user-info">
+
+                    <strong id="topbarEmployeeName">
+                        Employee
+                    </strong>
+
+                    <span id="employeeRole">
+                        Employee
+                    </span>
+
+                </div>
+
+            </header>
+
+            <!-- =========================
+                 DASHBOARD CONTENT
+            ========================== -->
+
+            <div class="dashboard-content">
+
+
+            <!-- =================================================
+                 DASHBOARD SECTION
+            ================================================== -->
+
+            <section id="dashboard" class="dashboard-section">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>Dashboard Overview</h2>
+
+                        <p>
+                            Overview of your work and activities.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =========================
+                     OVERVIEW CARDS
+                ========================== -->
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+
+                        <h3>My Projects</h3>
+
+                        <p id="projectCount">
+                            0
+                        </p>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <h3>Pending Tasks</h3>
+
+                        <p id="pendingTaskCount">
+                            0
+                        </p>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <h3>Completed Tasks</h3>
+
+                        <p id="completedTaskCount">
+                            0
+                        </p>
+
+                    </div>
+
+
+                    <div class="stat-card">
+
+                        <h3>Leave Requests</h3>
+
+                        <p id="leaveRequestCount">
+                            0
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================
+                     DASHBOARD PREVIEWS
+                ========================== -->
+
+                <div class="employee-dashboard-previews">
+
+
+                    <!-- My Projects Preview -->
+
+                    <div class="dashboard-preview-card">
+
+                        <div class="preview-header">
+
+                            <div>
+
+                                <h3>My Projects</h3>
+
+                                <p>
+                                    Your assigned projects
+                                </p>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="view-all-button"
+                                data-section="projects"
+                            >
+                                View All
+                            </button>
+
+                        </div>
+
+
+                        <div id="dashboardProjects">
+
+                            <p class="empty-message">
+                                No projects assigned.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- My Tasks Preview -->
+
+                    <div class="dashboard-preview-card">
+
+                        <div class="preview-header">
+
+                            <div>
+
+                                <h3>My Tasks</h3>
+
+                                <p>
+                                    Your assigned tasks
+                                </p>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="view-all-button"
+                                data-section="tasks"
+                            >
+                                View All
+                            </button>
+
+                        </div>
+
+
+                        <div id="dashboardTasks">
+
+                            <p class="empty-message">
+                                No tasks available.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Attendance Preview -->
+
+                    <div class="dashboard-preview-card">
+
+                        <div class="preview-header">
+
+                            <div>
+
+                                <h3>Today's Attendance</h3>
+
+                                <p>
+                                    Your attendance status
+                                </p>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="view-all-button"
+                                data-section="attendance"
+                            >
+                                View
+                            </button>
+
+                        </div>
+
+
+                        <div id="dashboardAttendance">
+
+                            <p>
+                                Status:
+                                <strong id="dashboardAttendanceStatus">
+                                    Not checked in
+                                </strong>
+                            </p>
+
+                            <p>
+                                Check In:
+                                <span id="dashboardCheckInTime">
+                                    --
+                                </span>
+                            </p>
+
+                            <p>
+                                Check Out:
+                                <span id="dashboardCheckOutTime">
+                                    --
+                                </span>
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Leaves Preview -->
+
+                    <div class="dashboard-preview-card">
+
+                        <div class="preview-header">
+
+                            <div>
+
+                                <h3>Recent Leaves</h3>
+
+                                <p>
+                                    Your leave requests
+                                </p>
+
+                            </div>
+
+                            <button
+                                type="button"
+                                class="view-all-button"
+                                data-section="leaves"
+                            >
+                                View All
+                            </button>
+
+                        </div>
+
+
+                        <div id="dashboardLeaves">
+
+                            <p class="empty-message">
+                                No leave requests found.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 MY PROJECTS
+            ================================================== -->
+
+            <section id="projects" class="dashboard-section">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>My Projects</h2>
+
+                        <p>
+                            Projects assigned to you.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="projectsContainer">
+
+                    <p class="empty-message">
+                        No projects assigned.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 MY TASKS
+            ================================================== -->
+
+            <section id="tasks" class="dashboard-section">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>My Tasks</h2>
+
+                        <p>
+                            Tasks assigned to you.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="list-filter">
+                    <label for="taskStatusFilter">
+                        Status
+                    </label>
+
+                    <select id="taskStatusFilter">
+                        <option value="all" selected>
+                            All
+                        </option>
+
+                        <option value="pending">
+                            Pending
+                        </option>
+
+                        <option value="in_progress">
+                            In Progress
+                        </option>
+
+                        <option value="completed">
+                            Completed
+                        </option>
+                    </select>
+                </div>
+
+
+                <div id="tasksContainer">
+
+                    <p class="empty-message">
+                        No tasks available.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- =================================================
+                 ATTENDANCE
+            ================================================== -->
+
+            <section id="attendance" class="dashboard-section">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>Attendance</h2>
+
+                        <p>
+                            Manage your daily attendance.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="attendance-actions">
+
+                    <button 
+                        id="checkInBtn" 
+                        type="button"
+                        class="primary-button"
+                        >Check In
+                    </button>
+
+
+                    <button 
+                        id="checkOutBtn" 
+                        type="button"
+                        class="secondary-button"
+                        >Check Out
+                    </button>
+
+                </div>
+
+
+                <div class="attendance-time">
+
+                    <div>
+
+                        <span>
+                            Check In Time
+                        </span>
+
+                        <strong id="checkInTime">
+                            --
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            Check Out Time
+                        </span>
+
+                        <strong id="checkOutTime">
+                            --
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="attendance-status">
+
+                    <p>
+                        Today's Status:
+                        <strong id="attendanceStatus">
+                            Not checked in
+                        </strong>
+                    </p>
+
+                </div>
+
+
+                <div class="attendance-history">
+
+                    <h3>
+                        Attendance History
+                    </h3>
+
+
+                    <div id="attendanceHistoryContainer">
+
+                        <p class="empty-message">
+                            No attendance records found.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 LEAVES
+            ================================================== -->
+
+            <section id="leaves" class="dashboard-section">
+
+                <div class="section-header">
+                    <div>
+                        <h2>Leaves</h2>
+                        <p>Apply and view your leave requests.</p>
+                    </div>
+
+                    <button type="button" id="applyLeaveButton" class="primary-button">
+                        Apply Leave
+                    </button>
+                </div>
+
+                <!-- Leave Form (hidden until "Apply Leave" is clicked) -->
+                <div id="leaveFormContainer" class="employee-form-container">
+
+                    <form id="leaveForm">
+
+                        <h3>Apply for Leave</h3>
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label for="leaveStartDate">Start Date<span class="imp_dot">*</span></label>
+                                <input type="date" id="leaveStartDate" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="leaveEndDate">End Date<span class="imp_dot">*</span></label>
+                                <input type="date" id="leaveEndDate" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="leaveReason">Reason<span class="imp_dot">*</span></label>
+                                <textarea id="leaveReason" rows="4" required></textarea>
+                            </div>
+
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" id="leaveSubmitButton" class="primary-button">
+                                Submit Leave
+                            </button>
+
+                            <button type="button" id="cancelLeaveButton" class="secondary-button">
+                                Cancel
+                            </button>
+                        </div>
+
+                        <p id="leaveFormMessage"></p>
+
+                    </form>
+
+                </div>
+
+                <div class="leave-records">
+                    <h3>My Leave Requests</h3>
+
+                    <div id="leavesContainer">
+                        <p class="empty-message">No leave requests found.</p>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 PROFILE
+            ================================================== -->
+
+            <section id="profile" class="dashboard-section">
+
+                <div class="section-header">
+
+                    <div>
+
+                        <h2>My Profile</h2>
+
+                        <p>
+                            Your employee information.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="profileContainer" class="profile-card">
+
+                    <div class="profile-hero">
+
+                        <div class="profile-avatar" id="profileAvatar">
+                            --
+                        </div>
+
+                        <div class="profile-hero-info">
+
+                            <h3 id="profileName">
+                                --
+                            </h3>
+
+                            <p class="profile-email" id="profileEmail">
+                                --
+                            </p>
+
+                            <div class="profile-badges">
+
+                                <span class="profile-role-badge" id="profileRole">
+                                    --
+                                </span>
+
+                                <span class="employee-status-badge active" id="profileStatus">
+                                    Active
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="profile-grid">
+
+                        <div class="profile-field">
+                            <span>Department</span>
+                            <strong id="profileDepartment">--</strong>
+                        </div>
+
+                        <div class="profile-field">
+                            <span>Designation</span>
+                            <strong id="profileDesignation">--</strong>
+                        </div>
+
+                        <div class="profile-field">
+                            <span>Phone</span>
+                            <strong id="profilePhone">--</strong>
+                        </div>
+
+                        <div class="profile-field">
+                            <span>Joining Date</span>
+                            <strong id="profileJoiningDate">--</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <script src="js/ids.js"></script>
+
+    <!-- Split employee.js modules — employee-core.js MUST load first, employee-init.js MUST load last -->
+    <script src="jse/employee-core.js"></script>
+    <script src="jse/employee-tasks.js"></script>
+    <script src="jse/employee-dashboard-stats.js"></script>
+    <script src="jse/employee-leaves.js"></script>
+    <script src="jse/employee-attendance.js"></script>
+    <script src="jse/employee-projects.js"></script>
+    <script src="jse/employee-previews.js"></script>
+    <script src="jse/employee-profile.js"></script>
+    <script src="jse/employee-init.js"></script>
+
+    <script src="js/custom-select.js"></script>
+    <script src="js/custom-date.js"></script>
+    <script src="js/date-restrictions.js"></script>
+
+</body>
+
+</html>

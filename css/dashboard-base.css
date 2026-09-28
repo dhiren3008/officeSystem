@@ -1,0 +1,125 @@
+/* ==========================================================
+   DASHBOARD — BASE
+   Design tokens (colors, spacing, fonts) + base element styles.
+   Load FIRST — everything else builds on these tokens.
+   ========================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap");
+
+/* ==========================================================
+   1. DESIGN TOKENS
+   ========================================================== */
+
+:root {
+    /* Colors */
+    --navy: #131b34;
+    --navy-mid: #1b2648;
+    --navy-light: #26366b;
+    --ink: #182235;
+    --ink-soft: #435169;
+    --muted: #718096;
+    --line: #e7ecf4;
+    --line-strong: #d9e0ec;
+    --surface: #ffffff;
+    --surface-soft: #fafbfe;
+    --canvas: #f4f6fb;
+
+    --primary: #5b5ce2;
+    --primary-dark: #4849c8;
+    --primary-soft: rgba(91, 92, 226, .10);
+    --primary-ring: rgba(91, 92, 226, .16);
+
+    --teal: #13b8a6;
+    --teal-dark: #0f9c8c;
+    --orange: #f59e67;
+    --red: #ef6a78;
+
+    /* Gradients */
+    --grad-primary: linear-gradient(115deg, #5b5ce2 0%, #7c6cf0 100%);
+    --grad-sidebar: linear-gradient(170deg, #131b34 0%, #1b2648 55%, #232f5c 100%);
+
+    /* Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius: 18px;
+
+    /* Shadows */
+    --shadow-xs: 0 1px 2px rgba(24, 34, 53, .05);
+    --shadow-sm: 0 4px 14px rgba(35, 48, 86, .06);
+    --shadow: 0 12px 32px rgba(35, 48, 86, .08);
+    --shadow-lg: 0 20px 44px rgba(35, 48, 86, .14);
+    --shadow-pop: 0 16px 38px rgba(22, 33, 62, .16), 0 2px 8px rgba(22, 33, 62, .06);
+
+    /* Motion */
+    --ease: cubic-bezier(.16, 1, .3, 1);
+}
+
+/* ==========================================================
+   2. BASE
+   ========================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    background:
+        radial-gradient(900px 400px at 100% -10%, rgba(91, 92, 226, .07), transparent 60%),
+        radial-gradient(700px 360px at 0% 110%, rgba(19, 184, 166, .05), transparent 60%),
+        var(--canvas);
+    background-attachment: fixed;
+    color: var(--ink);
+    font-family: "DM Sans", Arial, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+::selection {
+    background: var(--primary-ring);
+}
+
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Slim scrollbars everywhere */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #cfd8e8 transparent;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cfd8e8;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #b3c0d7;
+}
+.imp_dot{
+    color: red;
+}
+

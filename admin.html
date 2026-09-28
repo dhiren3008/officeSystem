@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard</title>
+    <link rel="icon" type="image/png" href="/management.png">
+
+    <link rel="stylesheet" href="css/dashboard-base.css">
+    <link rel="stylesheet" href="css/dashboard-components.css">
+    <link rel="stylesheet" href="css/dashboard-domain.css">
+    <link rel="stylesheet" href="css/dashboard-custom-widgets.css">
+    <link rel="stylesheet" href="css/dashboard-layout.css">
+    <link rel="stylesheet" href="css/dashboard-manager-projects.css">
+    <link rel="stylesheet" href="css/dashboard-responsive.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- =========================
+             SIDEBAR
+        ========================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+                <h2>Office Management</h2>
+                <p>Admin Panel</p>
+            </div>
+
+            <nav class="sidebar-nav">
+
+                <a href="#dashboard" class="nav-link active">
+                    Dashboard
+                </a>
+
+                <a href="#employees" class="nav-link">
+                    Employees
+                </a>
+
+                <a href="#projects" class="nav-link">
+                    Projects
+                </a>
+
+                <a href="#tasks" class="nav-link">
+                    Tasks
+                </a>
+
+                <a href="#attendance" class="nav-link">
+                    Attendance
+                </a>
+
+                <a href="#leaves" class="nav-link">
+                    Leaves
+                </a>
+
+                <a href="#reports" class="nav-link">
+                    Reports
+                </a>
+
+                <a href="#profile" class="nav-link">
+                    Profile
+                </a>
+
+                <a href="index.html" class="nav-link logout-link">
+                    Logout
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- =========================
+             MAIN CONTENT
+        ========================== -->
+
+        <main class="main-content">
+
+
+            <!-- =========================
+                 TOPBAR
+            ========================== -->
+
+            <header class="topbar">
+
+                <div>
+                    <h1>Admin Dashboard</h1>
+
+                    <p>
+                        Welcome back,
+                        <span id="adminName">Admin</span>
+                    </p>
+                </div>
+
+                <div class="user-info">
+
+                    <strong id="adminDisplayName">
+                        Admin User
+                    </strong>
+
+                    <span>
+                        Administrator
+                    </span>
+
+                </div>
+
+            </header>
+
+
+            <!-- =========================
+                 DASHBOARD CONTENT
+            ========================== -->
+
+            <div class="dashboard-content">
+
+
+                <!-- =========================
+                    DASHBOARD SECTION
+                ========================== -->
+
+                <section id="dashboard" class="dashboard-section">
+
+                    <div class="section-header">
+
+                        <div>
+                            <h2>Dashboard Overview</h2>
+
+                            <p>
+                                Overview of office management activities.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <!-- =========================
+                        STATISTICS
+                    ========================== -->
+
+                    <div class="stats-grid">
+
+                        <div class="stat-card">
+
+                            <h3>Total Employees</h3>
+
+                            <p id="totalEmployees">
+                                0
+                            </p>
+
+                        </div>
+
+
+                        <div class="stat-card">
+
+                            <h3>Total Projects</h3>
+
+                            <p id="totalProjects">
+                                0
+                            </p>
+
+                        </div>
+
+
+                        <div class="stat-card">
+
+                            <h3>Pending Leaves</h3>
+
+                            <p id="pendingLeaves">
+                                0
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =========================
+                        DASHBOARD PREVIEWS
+                    ========================== -->
+
+                    <div class="dashboard-preview-grid">
+
+
+                        <!-- Employees Preview -->
+
+                        <div class="dashboard-preview-card">
+
+                            <div class="preview-header">
+
+                                <div>
+                                    <h3>Employees</h3>
+
+                                    <p>
+                                        Recently added employees
+                                    </p>
+                                </div>
+
+                                <button class="view-all-button" data-section="employees">
+                                    View All
+                                </button>
+
+                            </div>
+
+                            <div id="dashboardEmployees">
+
+                                <p class="empty-message">
+                                    No employees found.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Projects Preview -->
+
+                        <div class="dashboard-preview-card">
+
+                            <div class="preview-header">
+
+                                <div>
+                                    <h3>Projects</h3>
+
+                                    <p>
+                                        Recent projects
+                                    </p>
+                                </div>
+
+                                <button class="view-all-button" data-section="projects">
+                                    View All
+                                </button>
+
+                            </div>
+
+                            <div id="dashboardProjects">
+
+                                <p class="empty-message">
+                                    No projects found.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Tasks Preview -->
+
+                        <div class="dashboard-preview-card">
+
+                            <div class="preview-header">
+
+                                <div>
+                                    <h3>Tasks</h3>
+
+                                    <p>
+                                        Recent tasks
+                                    </p>
+                                </div>
+
+                                <button class="view-all-button" data-section="tasks">
+                                    View All
+                                </button>
+
+                            </div>
+
+                            <div id="dashboardTasks">
+
+                                <p class="empty-message">
+                                    No tasks found.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Attendance Preview -->
+
+                        <div class="dashboard-preview-card">
+
+                            <div class="preview-header">
+
+                                <div>
+                                    <h3>Attendance</h3>
+
+                                    <p>
+                                        Recent attendance records
+                                    </p>
+                                </div>
+
+                                <button class="view-all-button" data-section="attendance">
+                                    View All
+                                </button>
+
+                            </div>
+
+                            <div id="dashboardAttendance">
+
+                                <p class="empty-message">
+                                    No attendance records found.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Leaves Preview -->
+
+                        <div class="dashboard-preview-card">
+
+                            <div class="preview-header">
+
+                                <div>
+                                    <h3>Leaves</h3>
+
+                                    <p>
+                                        Recent leave requests
+                                    </p>
+                                </div>
+
+                                <button class="view-all-button" data-section="leaves">
+                                    View All
+                                </button>
+
+                            </div>
+
+                            <div id="dashboardLeaves">
+
+                                <p class="empty-message">
+                                    No leave requests found.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+                <!-- =========================
+                     EMPLOYEES
+                ========================== -->
+
+                <section id="employees" class="dashboard-section">
+
+                    <div class="section-header">
+
+                        <div>
+                            <h2>Employees</h2>
+                            <p>Manage all employees in the organization.</p>
+                        </div>
+
+                        <button type="button" id="addEmployeeButton" class="primary-button">
+                            Add Employee
+                        </button>
+
+                    </div>
+
+
+                    <!-- Add Employee Form -->
+
+                    <div id="employeeFormContainer" class="employee-form-container">
+
+                        <form id="employeeForm">
+
+                            <h3 id="employeeFormTitle">Add Employee</h3>
+
+
+                            <div class="form-grid">
+
+                                <div class="form-group">
+
+                                    <label for="employeeName">
+                                        Name<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <input type="text" id="employeeName" placeholder="Enter employee name" required>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="employeeEmail">
+                                        Email<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <input type="email" id="employeeEmail" placeholder="Enter employee email" required>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="employeePassword">
+                                        Password<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <input type="password" id="employeePassword" placeholder="Enter password (blank keeps current on edit)" minlength="6">
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="employeePhone">
+                                        Phone<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <input type="tel" id="employeePhone" minlength="10" maxlength="12"
+                                        pattern="[0-9]{10,12}" title="Phone must be 10-12 digits"
+                                        placeholder="Enter phone number" required>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="employeeDepartment">
+                                        Department<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <select id="employeeDepartment" required>
+
+                                        <option value="">
+                                            Select Department
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="employeeDesignation">
+                                        Designation<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <input type="text" id="employeeDesignation" placeholder="Enter designation"
+                                        required>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label for="employeeJoiningDate">
+                                        Joining Date<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <input type="date" id="employeeJoiningDate" required>
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label for="employeeRole">
+                                        Role<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <select id="employeeRole" required>
+
+                                        <option value="">
+                                            Select Role
+                                        </option>
+
+                                        <option value="employee">
+                                            Employee
+                                        </option>
+
+                                        <option value="project_manager">
+                                            Project Manager
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <label for="employeeStatus">
+                                        Status<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <select id="employeeStatus">
+
+                                        <option value="active">
+                                            Active
+                                        </option>
+
+                                        <option value="inactive">
+                                            Inactive
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+                            </div>
+
+
+                            <div class="form-actions">
+
+                                <button type="submit" class="primary-button" id="employeeSubmitButton">
+                                    Save Employee
+                                </button>
+
+                                <button type="button" id="cancelEmployeeButton" class="secondary-button">
+                                    Cancel
+                                </button>
+
+                            </div>
+
+
+                            <p id="employeeFormMessage"></p>
+
+                        </form>
+
+                    </div>
+
+
+                    <!-- Employees List -->
+
+                    <div class="employee-filter">
+                        <label for="employeeStatusFilter">
+                            Status
+                        </label>
+
+                        <select id="employeeStatusFilter">
+                            <option value="all">
+                                All
+                            </option>
+
+                            <option value="active" selected>
+                                Active
+                            </option>
+
+                            <option value="inactive">
+                                Inactive
+                            </option>
+                        </select>
+                    </div>
+
+                    <div id="employeesContainer"></div>
+
+                </section>
+
+
+                <!-- =========================
+                    PROJECTS
+                ========================== -->
+
+                <section id="projects" class="dashboard-section">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <h2>Projects</h2>
+
+                            <p>
+                                Create and manage office projects.
+                            </p>
+
+                        </div>
+
+
+                        <button type="button" id="addProjectButton" class="primary-button">
+                            Add Project
+                        </button>
+
+                    </div>
+
+
+                    <!-- =========================
+                        PROJECT FORM
+                    ========================== -->
+
+                    <div id="projectFormContainer" class="employee-form-container">
+
+                        <form id="projectForm">
+
+                            <h3 id="projectFormTitle">
+                                Add Project<span class="imp_dot">*</span>
+                            </h3>
+
+
+                            <div class="form-grid">
+
+
+                                <!-- Project Name -->
+
+                                <div class="form-group">
+
+                                    <label for="projectName">
+                                        Project Name<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <input type="text" id="projectName" placeholder="Enter project name" required>
+
+                                </div>
+
+
+                                <!-- Description -->
+
+                                <div class="form-group project-description-group">
+
+                                    <label for="projectDescription">
+                                        Description<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <textarea id="projectDescription" placeholder="Enter project description" rows="4"
+                                        required></textarea>
+
+                                </div>
+
+                                <!-- Start Date -->
+
+                                <div class="form-group">
+
+                                    <label for="projectStartDate">
+                                        Start Date<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <input type="date" id="projectStartDate" required>
+
+                                </div>
+
+
+                                <!-- End Date -->
+
+                                <div class="form-group">
+
+                                    <label for="projectEndDate">
+                                        End Date<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <input type="date" id="projectEndDate">
+
+                                </div>
+
+
+                                <!-- Project Manager -->
+
+                                <div class="form-group">
+
+                                    <label for="projectManager">
+                                        Project Manager<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <select id="projectManager" required>
+
+                                        <option value="">
+                                            Select Project Manager
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- Project Status -->
+
+                                <div class="form-group">
+
+                                    <label for="projectStatus">
+                                        Status<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <select id="projectStatus" required>
+
+                                        <option value="">
+                                            Select Status
+                                        </option>
+
+                                        <option value="planning">
+                                            Planning
+                                        </option>
+
+                                        <option value="active">
+                                            Active
+                                        </option>
+
+                                        <option value="completed">
+                                            Completed
+                                        </option>
+
+                                        <option value="on_hold">
+                                            On Hold
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- Project Employees -->
+
+                                <div class="form-group project-employees-group">
+
+                                    <label>
+                                        Assign Employees<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <div class="members-picker" id="projectMembersPicker">
+
+                                        <button
+                                            type="button"
+                                            class="members-picker-trigger"
+                                            id="projectMembersTrigger"
+                                        >
+                                            <span id="projectMembersLabel">
+                                                Select team members<span class="imp_dot">*</span>
+                                            </span>
+
+                                            <svg class="custom-select-arrow" viewBox="0 0 24 24" fill="none"
+                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                            </svg>
+                                        </button>
+
+                                        <div class="members-picker-panel" id="projectMembersPanel">
+
+                                            <input
+                                                type="search"
+                                                id="projectMembersSearch"
+                                                placeholder="Search employees..."
+                                                autocomplete="off"
+                                            >
+
+                                            <div id="projectEmployees" class="members-picker-list">
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <!-- Form Buttons -->
+
+                            <div class="form-actions">
+
+                                <button type="submit" class="primary-button" id="projectSubmitButton">
+                                    Save Project
+                                </button>
+
+
+                                <button type="button" id="cancelProjectButton" class="secondary-button">
+                                    Cancel
+                                </button>
+
+                            </div>
+
+
+                            <p id="projectFormMessage"></p>
+
+                        </form>
+
+                    </div>
+
+
+                    <!-- =========================
+                        PROJECT LIST
+                    ========================== -->
+
+                    <div class="list-filter">
+                        <label for="projectStatusFilter">
+                            Status
+                        </label>
+
+                        <select id="projectStatusFilter">
+                            <option value="all" selected>
+                                All
+                            </option>
+
+                            <option value="planning">
+                                Planning
+                            </option>
+
+                            <option value="active">
+                                Active
+                            </option>
+
+                            <option value="completed">
+                                Completed
+                            </option>
+
+                            <option value="on_hold">
+                                On Hold
+                            </option>
+                        </select>
+                    </div>
+
+                    <div id="projectsContainer">
+
+                        <p class="empty-message">
+                            No projects to display.
+                        </p>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =========================
+                    TASKS
+                ========================== -->
+
+                <section id="tasks" class="dashboard-section">
+
+                    <div class="section-header">
+
+                        <div>
+                            <h2>Tasks</h2>
+
+                            <p>
+                                Create and manage employee tasks.
+                            </p>
+                        </div>
+
+                        <button type="button" id="addTaskButton" class="primary-button">
+                            Add Task
+                        </button>
+
+                    </div>
+
+
+                    <!-- =========================
+                        Task Form
+                    ========================== -->
+
+                    <div id="taskFormContainer" class="task-form-container">
+
+                        <form id="taskForm">
+
+                            <h3 id="taskFormTitle">
+                                Add Task
+                            </h3>
+
+
+                            <div class="form-grid">
+
+                                <!-- Task Title -->
+
+                                <div class="form-group">
+
+                                    <label for="taskTitle">
+                                        Task Title<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <input type="text" id="taskTitle" placeholder="Enter task title" required>
+
+                                </div>
+
+
+                                <!-- Description -->
+
+                                <div class="form-group">
+
+                                    <label for="taskDescription">
+                                        Description<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <textarea id="taskDescription" placeholder="Enter task description"
+                                        required></textarea>
+
+                                </div>
+
+
+                                <!-- Project -->
+
+                                <div class="form-group">
+
+                                    <label for="taskProject">
+                                        Project<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <select id="taskProject" required>
+
+                                        <option value="">
+                                            Select Project
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- Employees -->
+
+                                <div class="form-group project-employees-group">
+
+                                    <label>
+                                        Assign To<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <div class="members-picker" id="taskMembersPicker">
+
+                                        <button
+                                            type="button"
+                                            class="members-picker-trigger"
+                                            id="taskMembersTrigger"
+                                        >
+                                            <span id="taskMembersLabel">
+                                                Select team members<span class="imp_dot">*</span>
+                                            </span>
+
+                                            <svg class="custom-select-arrow" viewBox="0 0 24 24" fill="none"
+                                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                                <polyline points="6 9 12 15 18 9"></polyline>
+                                            </svg>
+                                        </button>
+
+                                        <div class="members-picker-panel" id="taskMembersPanel">
+
+                                            <input
+                                                type="search"
+                                                id="taskMembersSearch"
+                                                placeholder="Search employees..."
+                                                autocomplete="off"
+                                            >
+
+                                            <div id="taskMembersList" class="members-picker-list">
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- Priority -->
+
+                                <div class="form-group">
+
+                                    <label for="taskPriority">
+                                        Priority<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <select id="taskPriority" required>
+
+                                        <option value="">
+                                            Select Priority
+                                        </option>
+
+                                        <option value="low">
+                                            Low
+                                        </option>
+
+                                        <option value="medium">
+                                            Medium
+                                        </option>
+
+                                        <option value="high">
+                                            High
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- Status -->
+
+                                <div class="form-group">
+
+                                    <label for="taskStatus">
+                                        Status<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <select id="taskStatus" required>
+
+                                        <option value="pending">
+                                            Pending
+                                        </option>
+
+                                        <option value="in_progress">
+                                            In Progress
+                                        </option>
+
+                                        <option value="completed">
+                                            Completed
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- Due Date -->
+
+                                <div class="form-group">
+
+                                    <label for="taskDueDate">
+                                        Due Date<span class="imp_dot">*</span>
+                                    </label>
+
+                                    <input type="date" id="taskDueDate" required>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Form Buttons -->
+
+                            <div class="form-actions">
+
+                                <button type="submit" id="taskSubmitButton" class="primary-button">
+                                    Save Task
+                                </button>
+
+                                <button type="button" id="cancelTaskButton" class="secondary-button">
+                                    Cancel
+                                </button>
+
+                            </div>
+
+
+                            <p id="taskFormMessage"></p>
+
+                        </form>
+
+                    </div>
+
+
+                    <!-- =========================
+                        Tasks List
+                    ========================== -->
+
+                    <div class="list-filter">
+                        <label for="taskStatusFilter">
+                            Status
+                        </label>
+
+                        <select id="taskStatusFilter">
+                            <option value="all" selected>
+                                All
+                            </option>
+
+                            <option value="pending">
+                                Pending
+                            </option>
+
+                            <option value="in_progress">
+                                In Progress
+                            </option>
+
+                            <option value="completed">
+                                Completed
+                            </option>
+                        </select>
+
+                        <label for="taskPriorityFilter">
+                            Priority
+                        </label>
+
+                        <select id="taskPriorityFilter">
+                            <option value="all" selected>
+                                All
+                            </option>
+
+                            <option value="low">
+                                Low
+                            </option>
+
+                            <option value="medium">
+                                Medium
+                            </option>
+
+                            <option value="high">
+                                High
+                            </option>
+                        </select>
+                    </div>
+
+                    <div id="tasksContainer">
+
+                        <p class="empty-message">
+                            No tasks to display.
+                        </p>
+
+                    </div>
+
+                </section>
+
+                <!-- =========================
+                     ATTENDANCE
+                ========================== -->
+
+                <section id="attendance" class="dashboard-section">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <h2>Attendance</h2>
+
+                            <p>
+                                View and manage employee attendance.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Attendance Summary -->
+
+                    <div class="attendance-summary">
+
+                        <div class="attendance-stat-card">
+
+                            <h3>Total Employees</h3>
+
+                            <p id="attendanceTotalEmployees">
+                                0
+                            </p>
+
+                        </div>
+
+
+                        <div class="attendance-stat-card">
+
+                            <h3>Present</h3>
+
+                            <p id="attendancePresent">
+                                0
+                            </p>
+
+                        </div>
+
+
+                        <div class="attendance-stat-card">
+
+                            <h3>Absent</h3>
+
+                            <p id="attendanceAbsent">
+                                0
+                            </p>
+
+                        </div>
+
+
+                        <div class="attendance-stat-card">
+
+                            <h3>On Leave</h3>
+
+                            <p id="attendanceOnLeave">
+                                0
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Attendance Records -->
+
+                    <div class="attendance-records">
+
+                        <div class="attendance-records-header">
+
+                            <h3>
+                                Attendance Records
+                            </h3>
+
+                            <div class="attendance-date-filter">
+
+                                <label for="attendanceDateFilter">
+                                    Date
+                                </label>
+
+                                <input type="date" id="attendanceDateFilter">
+
+                            </div>
+
+                        </div>
+
+
+                        <div id="attendanceContainer">
+
+                            <p class="empty-message">
+                                No attendance records to display.
+                            </p>
+
+                        </div>
+
+                        <!-- Attendance Edit Form -->
+
+                        <div id="attendanceFormContainer" class="attendance-form-container">
+
+                            <div class="attendance-form">
+
+                                <h3 id="attendanceFormTitle">
+                                    Edit Attendance
+                                </h3>
+
+
+                                <form id="attendanceForm">
+
+                                    <div class="form-group">
+
+                                        <label for="attendanceDate">
+                                            Date
+                                        </label>
+
+                                        <input type="date" id="attendanceDate" required>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label for="attendanceCheckIn">
+                                            Check In
+                                        </label>
+
+                                        <input type="time" id="attendanceCheckIn">
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label for="attendanceCheckOut">
+                                            Check Out
+                                        </label>
+
+                                        <input type="time" id="attendanceCheckOut">
+
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <label for="attendanceStatus">
+                                            Status
+                                        </label>
+
+                                        <select id="attendanceStatus">
+
+                                            <option value="Present">
+                                                Present
+                                            </option>
+
+                                            <option value="Absent">
+                                                Absent
+                                            </option>
+
+                                            <option value="On Leave">
+                                                On Leave
+                                            </option>
+
+                                        </select>
+
+                                    </div>
+
+
+                                    <p id="attendanceFormMessage"></p>
+
+
+                                    <!-- <div class="form-actions">
+
+                                        <button type="submit" id="attendanceSubmitButton">
+                                            Update Attendance
+                                        </button>
+
+                                        <button type="button" id="cancelAttendanceButton">
+                                            Cancel
+                                        </button>
+
+                                    </div> -->
+
+                                </form>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- =========================
+                     LEAVES
+                ========================== -->
+
+                <section id="leaves" class="dashboard-section">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <h2>Leaves</h2>
+
+                            <p>
+                                Manage employee leave requests.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Leave Summary -->
+
+                    <div class="leave-summary">
+
+                        <div class="leave-stat-card">
+
+                            <h3>Pending</h3>
+
+                            <p id="pendingLeaveCount">
+                                0
+                            </p>
+
+                        </div>
+
+
+                        <div class="leave-stat-card">
+
+                            <h3>Approved</h3>
+
+                            <p id="approvedLeaveCount">
+                                0
+                            </p>
+
+                        </div>
+
+
+                        <div class="leave-stat-card">
+
+                            <h3>Rejected</h3>
+
+                            <p id="rejectedLeaveCount">
+                                0
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div id="leavesContainer">
+
+                        <p class="empty-message">
+                            No leave requests found.
+                        </p>
+
+                    </div>
+
+                </section>
+
+                <!-- =========================
+                    REPORTS
+                ========================= -->
+
+                <section id="reports" class="dashboard-section">
+
+                    <div class="section-header">
+
+                        <div>
+
+                            <h2>Reports</h2>
+
+                            <p>
+                                View office management reports.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div id="reportsContainer">
+
+
+                        <!-- =========================
+                            Employee Report
+                        ========================= -->
+
+                        <div class="report-card">
+
+                            <h3>Employee Report</h3>
+
+                            <p>
+                                Total Employees:
+                                <strong id="reportTotalEmployees">
+                                    0
+                                </strong>
+                            </p>
+
+                            <p>
+                                Active Employees:
+                                <strong id="reportActiveEmployees">
+                                    0
+                                </strong>
+                            </p>
+
+                            <p>
+                                Inactive Employees:
+                                <strong id="reportInactiveEmployees">
+                                    0
+                                </strong>
+                            </p>
+
+                            <p>
+                                Project Managers:
+                                <strong id="reportProjectManagers">
+                                    0
+                                </strong>
+                            </p>
+
+                        </div>
+
+
+                        <!-- =========================
+                            Project Report
+                        ========================= -->
+
+                        <div class="report-card">
+
+                            <h3>Project Report</h3>
+
+                            <p>
+                                Total Projects:
+                                <strong id="reportTotalProjects">
+                                    0
+                                </strong>
+                            </p>
+
+                            <p>
+                                Active Projects:
+                                <strong id="reportActiveProjects">
+                                    0
+                                </strong>
+                            </p>
+
+                            <p>
+                                Completed Projects:
+                                <strong id="reportCompletedProjects">
+                                    0
+                                </strong>
+                            </p>
+
+                        </div>
+
+
+                        <!-- =========================
+                            Task Report
+                        ========================= -->
+
+                        <div class="report-card">
+
+                            <h3>Task Report</h3>
+
+                            <p>
+                                Total Tasks:
+                                <strong id="reportTotalTasks">
+                                    0
+                                </strong>
+                            </p>
+
+                            <p>
+                                Pending Tasks:
+                                <strong id="reportPendingTasks">
+                                    0
+                                </strong>
+                            </p>
+
+                            <p>
+                                In Progress Tasks:
+                                <strong id="reportInProgressTasks">
+                                    0
+                                </strong>
+                            </p>
+
+                            <p>
+                                Completed Tasks:
+                                <strong id="reportCompletedTasks">
+                                    0
+                                </strong>
+                            </p>
+
+                        </div>
+
+
+                        <!-- =========================
+                            Attendance Report
+                        ========================= -->
+
+                        <div class="report-card">
+
+                            <h3>Attendance Report</h3>
+
+                            <p class="report-date-row">
+                                Date:
+                                <input type="date" id="reportAttendanceDate">
+                            </p>
+
+                            <p>
+                                Present:
+                                <strong id="reportPresent">
+                                    0
+                                </strong>
+                            </p>
+
+                            <p>
+                                Absent:
+                                <strong id="reportAbsent">
+                                    0
+                                </strong>
+                            </p>
+
+                            <p>
+                                On Leave:
+                                <strong id="reportOnLeave">
+                                    0
+                                </strong>
+                            </p>
+
+                        </div>
+
+
+                        <!-- =========================
+                            Leave Report
+                        ========================= -->
+
+                        <div class="report-card">
+
+                            <h3>Leave Report</h3>
+
+                            <p>
+                                Pending Leaves:
+                                <strong id="reportPendingLeaves">
+                                    0
+                                </strong>
+                            </p>
+
+                            <p>
+                                Approved Leaves:
+                                <strong id="reportApprovedLeaves">
+                                    0
+                                </strong>
+                            </p>
+
+                            <p>
+                                Rejected Leaves:
+                                <strong id="reportRejectedLeaves">
+                                    0
+                                </strong>
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+                </section>
+
+                <!-- =========================
+                    PROFILE
+                ========================= -->
+
+                <section id="profile" class="dashboard-section">
+
+                    <div class="section-header">
+
+                        <div>
+                            <h2>Admin Profile</h2>
+
+                            <p>
+                                View your account information.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div id="profileContainer" class="profile-card">
+
+                        <div class="profile-hero">
+
+                            <div class="profile-avatar" id="profileAvatar">
+                                A
+                            </div>
+
+                            <div class="profile-hero-info">
+
+                                <h3 id="profileName">
+                                    Admin User
+                                </h3>
+
+                                <p class="profile-email" id="profileEmail">
+                                    admin@gmail.com
+                                </p>
+
+                                <div class="profile-badges">
+
+                                    <span class="profile-role-badge" id="profileRole">
+                                        Admin
+                                    </span>
+
+                                    <span class="employee-status-badge active" id="profileStatus">
+                                        Active
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="profile-grid">
+
+                            <div class="profile-field">
+                                <span>Department</span>
+                                <strong id="profileDepartment">-</strong>
+                            </div>
+
+
+                            <div class="profile-field">
+                                <span>Designation</span>
+                                <strong id="profileDesignation">-</strong>
+                            </div>
+
+
+                            <div class="profile-field">
+                                <span>Phone</span>
+                                <strong id="profilePhone">-</strong>
+                            </div>
+
+
+                            <div class="profile-field">
+                                <span>Joining Date</span>
+                                <strong id="profileJoiningDate">-</strong>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================
+         ADMIN JAVASCRIPT
+    ========================== -->
+
+    
+    <!-- Split admin.js modules — admin-core.js MUST load first, admin-init.js MUST load last -->
+    <script src="js/ids.js"></script>
+    <script src="js/admin-core.js"></script>
+
+    <script src="js/admin-employees.js"></script>
+    <script src="js/admin-projects.js"></script>
+    <script src="js/admin-tasks.js"></script>
+    <script src="js/admin-attendance.js"></script>
+    <script src="js/admin-leaves.js"></script>
+    <script src="js/admin-reports.js"></script>
+    <script src="js/admin-init.js"></script>
+
+    <script src="js/custom-select.js"></script>
+    <script src="js/custom-date.js"></script>
+    <script src="js/date-restrictions.js"></script>
+
+</body>
+
+</html>

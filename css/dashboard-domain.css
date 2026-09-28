@@ -1,0 +1,397 @@
+/* ==========================================================
+   DASHBOARD — DOMAIN
+   Attendance, project/task/leave cards, leave rejection panel,
+   profile, task status control (employee My Tasks card).
+   ========================================================== */
+
+/* ==========================================================
+   17. ATTENDANCE
+   ========================================================== */
+
+.attendance-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.attendance-time {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.attendance-time>div {
+    flex: 1;
+    padding: 16px 18px;
+    background: var(--surface-soft);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+}
+
+.attendance-time span {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.attendance-time strong {
+    color: var(--ink);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 19px;
+}
+
+.attendance-status {
+    margin-bottom: 20px;
+    font-size: 14px;
+    color: var(--ink);
+}
+
+#cancelAttendanceButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 42px;
+    padding: 0 20px;
+    margin-left: 10px;
+    border: 0;
+    border-radius: 11px;
+    color: var(--ink);
+    background: #eaeef6;
+    font-size: 13px;
+    font-weight: 700;
+    transition: transform .2s var(--ease), background .2s ease;
+}
+
+#cancelAttendanceButton:hover {
+    background: #dfe5f1;
+    transform: translateY(-2px);
+}
+
+#cancelAttendanceButton:active {
+    transform: translateY(0);
+}
+
+/* ==========================================================
+   18. PROJECT / TASK / LEAVE CARDS
+   ========================================================== */
+
+.project-card,
+.task-card,
+.leave-card {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.project-info,
+.task-info,
+.leave-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.project-info h3,
+.task-info h3,
+.leave-info h4 {
+    margin: 0 0 8px;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 15px;
+    color: var(--ink);
+}
+
+.project-info p,
+.task-info p,
+.leave-info p {
+    margin: 4px 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.project-details,
+.task-details,
+.leave-details {
+    flex-shrink: 0;
+    text-align: right;
+}
+
+.project-details p,
+.task-details p,
+.leave-details p {
+    margin: 0 0 6px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+/* ==========================================================
+   19. LEAVE REJECTION PANEL
+   ========================================================== */
+
+.reject-reason-panel {
+    display: none;
+    margin-top: 10px;
+}
+
+.reject-reason-panel.active {
+    display: block;
+    animation: fade-in .2s ease both;
+}
+
+.reject-reason-input {
+    width: 100%;
+    min-height: 70px;
+    padding: 10px 14px;
+    color: var(--ink);
+    background: var(--surface-soft);
+    border: 1px solid var(--line-strong);
+    border-radius: 11px;
+    outline: none;
+    resize: vertical;
+    transition: border .2s ease, box-shadow .2s ease;
+}
+
+.reject-reason-input:focus {
+    background: #fff;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-ring);
+}
+
+.reject-reason-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.rejection-reason {
+    margin: 10px 0 0;
+    padding: 9px 12px;
+    color: #d84a5a;
+    background: rgba(239, 106, 120, .09);
+    border-left: 3px solid var(--red);
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+/* ==========================================================
+   20. PROFILE — unified hero card (all panels)
+   Same tokens as stat / project cards: surface, line,
+   grad-primary top strip, grad-sidebar hero, pill badges.
+   ========================================================== */
+
+.profile-card {
+    position: relative;
+    max-width: 760px;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    transition: transform .25s var(--ease), box-shadow .25s ease, border-color .25s ease;
+}
+
+.profile-card::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    height: 4px;
+    background: var(--grad-primary);
+    content: "";
+}
+
+.profile-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(91, 92, 226, .25);
+    box-shadow: var(--shadow);
+}
+
+.profile-hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 30px 28px 26px;
+    overflow: hidden;
+    color: #fff;
+    background: var(--grad-sidebar);
+}
+
+.profile-hero::before {
+    position: absolute;
+    top: -70px;
+    right: -50px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124, 108, 240, .38), transparent 65%);
+    content: "";
+    pointer-events: none;
+}
+
+.profile-hero::after {
+    position: absolute;
+    bottom: -80px;
+    left: -40px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(19, 184, 166, .18), transparent 65%);
+    content: "";
+    pointer-events: none;
+}
+
+.profile-avatar {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    flex-shrink: 0;
+    place-content: center;
+    width: 76px;
+    height: 76px;
+    color: #fff;
+    background: var(--grad-primary);
+    border: 3px solid rgba(255, 255, 255, .35);
+    border-radius: 50%;
+    box-shadow: 0 10px 22px rgba(91, 92, 226, .38), inset 0 1px 0 rgba(255, 255, 255, .25);
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: -.02em;
+}
+
+.profile-hero-info {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+}
+
+.profile-hero-info h3 {
+    margin: 0;
+    color: #fff;
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    line-height: 1.25;
+    word-break: break-word;
+}
+
+.profile-email {
+    margin: 6px 0 12px;
+    color: #9fadd2;
+    font-size: 13.5px;
+    word-break: break-word;
+}
+
+.profile-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.profile-role-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    color: #fff;
+    background: rgba(255, 255, 255, .12);
+    border: 1px solid rgba(255, 255, 255, .20);
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    padding: 24px 28px 28px;
+    background: var(--surface);
+}
+
+.profile-field {
+    padding: 14px 16px;
+    background: var(--surface-soft);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.profile-field:hover {
+    background: #fff;
+    border-color: rgba(91, 92, 226, .25);
+    box-shadow: var(--shadow-xs);
+}
+
+.profile-field span {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}
+
+.profile-field strong {
+    display: block;
+    overflow-wrap: anywhere;
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 700;
+}
+
+@media (max-width: 680px) {
+    .profile-hero {
+        flex-direction: column;
+        padding: 26px 20px 22px;
+        text-align: center;
+    }
+
+    .profile-badges {
+        justify-content: center;
+    }
+
+    .profile-grid {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+}
+
+/* ==========================================================
+   21. TASK STATUS CONTROL  (employee My Tasks card)
+   ========================================================== */
+
+.task-status-control {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.task-status-control .custom-select-wrapper {
+    width: 150px;
+}
+
+/* Task assignee chips share project chip theme. */
+
+.task-card .project-member-list {
+    margin: 8px 0 4px;
+}
+
+.task-card .task-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+
