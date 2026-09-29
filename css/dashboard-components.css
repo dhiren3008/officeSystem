@@ -736,6 +736,23 @@ button[class^="approve-"]:hover {
     max-width: 260px;
 }
 
+/* Open filter must paint above the cards grid below it
+   (e.g. #projectsContainer .project-card items are positioned
+   siblings rendered later in DOM order). */
+.employee-filter:has(.custom-select-wrapper.open),
+.list-filter:has(.custom-select-wrapper.open) {
+    z-index: 50;
+}
+
+/* Open filter list sizes to its option text instead of being
+   squeezed to the narrow trigger width. */
+.employee-filter .custom-select-list,
+.list-filter .custom-select-list {
+    width: max-content;
+    min-width: 100%;
+    max-width: min(320px, 80vw);
+}
+
 /* ==========================================================
    13. CHECKBOX GROUP
    ========================================================== */

@@ -29,26 +29,40 @@ document.addEventListener("DOMContentLoaded", function () {
 // Called on page load and whenever an Add form is opened.
 // =========================
 
+function refreshDateWidget(el) {
+    if (!el) return;
+    // Re-assigning value runs the custom-date.js value interceptor,
+    // which calls syncTrigger() -> renderGrid() so new min/max
+    // disabled states paint immediately.
+    try {
+        if (el.dataset && el.dataset.enhanced === "true") {
+            el.value = el.value;
+        }
+    } catch (refreshError) {
+        // Ignore — calendar re-renders on next open anyway.
+    }
+}
+
 function applyCreateModeDateMins() {
     // Due dates / deadlines: never in the past
     ["taskDueDate", "projectStartDate", "leaveStartDate"].forEach(id => {
         const el = document.getElementById(id);
-        if (el) el.min = todayStr();
+        if (el) { el.min = todayStr(); refreshDateWidget(el); }
     });
 
     // Joining date: never in the future
     const joiningEl = document.getElementById("employeeJoiningDate");
-    if (joiningEl) joiningEl.max = todayStr();
+    if (joiningEl) { joiningEl.max = todayStr(); refreshDateWidget(joiningEl); }
 
     // Attendance: never in the future
     const attendanceDate = document.getElementById("attendanceDate");
-    if (attendanceDate) attendanceDate.max = todayStr();
+    if (attendanceDate) { attendanceDate.max = todayStr(); refreshDateWidget(attendanceDate); }
 
     // End dates default to today as well until a start is picked.
     const projectEnd = document.getElementById("projectEndDate");
-    if (projectEnd && !projectEnd.value) projectEnd.min = todayStr();
+    if (projectEnd && !projectEnd.value) { projectEnd.min = todayStr(); refreshDateWidget(projectEnd); }
     const leaveEnd = document.getElementById("leaveEndDate");
-    if (leaveEnd && !leaveEnd.value) leaveEnd.min = todayStr();
+    if (leaveEnd && !leaveEnd.value) { leaveEnd.min = todayStr(); refreshDateWidget(leaveEnd); }
 }
 
 // =========================
@@ -64,6 +78,7 @@ function relaxDateMinForEdit(inputId, savedValue) {
     const saved = String(savedValue);
     if (saved !== "" && (!el.min || saved < el.min)) {
         el.min = saved;
+        refreshDateWidget(el);
     }
 }
 
@@ -81,5 +96,6 @@ function linkStartEnd(startId, endId) {
         if (endEl.value && endEl.value < endEl.min) {
             endEl.value = "";
         }
+        refreshDateWidget(endEl);
     });
 }

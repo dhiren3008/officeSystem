@@ -30,6 +30,7 @@
 }
 
 .custom-select-trigger {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -213,16 +214,12 @@
     transform: translateY(0) scale(1);
 }
 
-/* ---- Single visible popup (CSS-only) ----
-   Several controls can hold .open at once; only paint the one
-   the user is actually interacting with. */
-.custom-select-wrapper.open:not(:hover):not(:focus-within) .custom-select-list,
-.custom-date-wrapper.open:not(:hover):not(:focus-within) .custom-date-popup,
-.members-picker.open:not(:hover):not(:focus-within) .members-picker-panel {
-    visibility: hidden;
-    opacity: 0;
-    transform: translateY(-6px);
-}
+/* ---- Single visible popup (JS-owned) ----
+   Only one widget holds .open at a time: openList()/openPopup()
+   and the members-picker triggers close all other popups first.
+   Visibility is driven by .open alone so mouse, touch, and
+   keyboard users get the same behavior. */
+
 
 .custom-date-header {
     display: flex;

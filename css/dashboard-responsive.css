@@ -136,8 +136,24 @@
         text-align: left;
     }
 
+    .task-card .task-details {
+        align-items: stretch;
+        flex-basis: auto;
+        min-width: 0;
+        max-width: none;
+        width: 100%;
+    }
+
+    .task-card .task-details p {
+        text-align: left;
+    }
+
     .task-status-control {
         justify-content: flex-start;
+    }
+
+    .task-status-control .custom-select-wrapper {
+        max-width: none;
     }
 
     .attendance-time {

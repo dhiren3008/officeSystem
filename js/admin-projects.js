@@ -548,7 +548,13 @@ document.getElementById("projectMembersTrigger")?.addEventListener("click", func
 
     event.stopPropagation();
 
-    document.getElementById("projectMembersPicker")?.classList.toggle("open");
+    const picker = document.getElementById("projectMembersPicker");
+
+    if (picker && !picker.classList.contains("open") && typeof window.closeAllCustomPopups === "function") {
+        window.closeAllCustomPopups(picker);
+    }
+
+    picker?.classList.toggle("open");
 
 });
 

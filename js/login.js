@@ -1,4 +1,4 @@
-const API_URL = "https://office-backend-c183.onrender.com/users";
+const API_URL = "http://localhost:3000";
 
 
 // =========================
@@ -131,7 +131,7 @@ loginForm.addEventListener("submit", async function (event) {
 
     try {
 
-        const response = await fetch(API_URL);
+        const response = await fetch(`${API_URL}/users?email=${encodeURIComponent(email.toLowerCase())}&password=${encodeURIComponent(password)}`);
 
 
         // Check if server response is successful
@@ -146,15 +146,10 @@ loginForm.addEventListener("submit", async function (event) {
         const users = await response.json();
 
         // =========================
-        // Find Matching User
+        // Take First Match (server already filtered by email + password)
         // =========================
 
-        const user = users.find(function (user) {
-
-            return String(user.email || "").trim().toLowerCase() === email.toLowerCase() &&
-                   user.password === password;
-
-        });
+        const user = users[0];
 
         // =========================
         // Invalid Login

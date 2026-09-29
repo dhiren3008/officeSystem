@@ -6,6 +6,31 @@
 // in admin.js and manager.js keeps working unchanged.
 // =========================
 
+// =========================
+// Shared popup coordinator: only one custom widget stays open.
+// Loaded before custom-date.js / members-picker code so every
+// opener can call it. Safe to define twice (guarded).
+// =========================
+
+if (typeof window.closeAllCustomPopups !== "function") {
+    window.closeAllCustomPopups = function (except) {
+        document.querySelectorAll(
+            ".custom-select-wrapper.open, .custom-date-wrapper.open, .members-picker.open"
+        ).forEach(function (el) {
+            if (el !== except) el.classList.remove("open");
+        });
+        document.querySelectorAll(
+            ".custom-select-trigger[aria-expanded='true'], .custom-date-trigger[aria-expanded='true']"
+        ).forEach(function (t) {
+            if (!except || !except.contains(t)) t.setAttribute("aria-expanded", "false");
+        });
+    };
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") window.closeAllCustomPopups();
+    });
+}
+
 function enhanceSelect(selectElement) {
 
     if (!selectElement || selectElement.dataset.enhanced === "true") {
@@ -35,6 +60,10 @@ function enhanceSelect(selectElement) {
 
     const trigger = document.createElement("div");
     trigger.className = "custom-select-trigger";
+    trigger.setAttribute("tabindex", "0");
+    trigger.setAttribute("role", "combobox");
+    trigger.setAttribute("aria-haspopup", "listbox");
+    trigger.setAttribute("aria-expanded", "false");
     trigger.innerHTML = `
         <span class="placeholder">Select</span>
         <svg class="custom-select-arrow" viewBox="0 0 24 24" fill="none"
@@ -129,11 +158,14 @@ function enhanceSelect(selectElement) {
 
 
     function openList() {
+        window.closeAllCustomPopups(wrapper);
         wrapper.classList.add("open");
+        trigger.setAttribute("aria-expanded", "true");
     }
 
     function closeList() {
         wrapper.classList.remove("open");
+        trigger.setAttribute("aria-expanded", "false");
     }
 
 
@@ -143,6 +175,19 @@ function enhanceSelect(selectElement) {
 
         wrapper.classList.contains("open") ? closeList() : openList();
 
+    });
+
+    trigger.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            wrapper.classList.contains("open") ? closeList() : openList();
+        } else if (event.key === "Escape") {
+            closeList();
+            trigger.blur();
+        } else if (event.key === "ArrowDown") {
+            event.preventDefault();
+            if (!wrapper.classList.contains("open")) openList();
+        }
     });
 
 

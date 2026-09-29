@@ -369,16 +369,78 @@
    21. TASK STATUS CONTROL  (employee My Tasks card)
    ========================================================== */
 
+.task-card .task-details:has(.task-status-control) {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    flex: 0 1 280px;
+    min-width: 200px;
+    max-width: 280px;
+}
+
+.task-card .task-details:has(.task-status-control) p {
+    margin: 0;
+    width: 100%;
+}
+
 .task-status-control {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    flex-wrap: wrap;
     gap: 8px;
-    margin-top: 8px;
+    width: 100%;
+    margin-top: 4px;
+}
+
+/* Pre-enhancement state: the raw <select> is full-width by default
+   (generic form CSS), which would blow out the flex row before
+   enhanceSelect() wraps it. Constrain it so layout matches post-wrap. */
+
+.task-status-control > select.task-status-select {
+    flex: 1 1 140px;
+    width: auto;
+    min-width: 140px;
+    max-width: 200px;
+    min-height: 38px;
 }
 
 .task-status-control .custom-select-wrapper {
-    width: 150px;
+    flex: 1 1 140px;
+    width: auto;
+    min-width: 140px;
+    max-width: 200px;
+}
+
+.task-status-control .custom-select-trigger {
+    min-height: 38px;
+    padding: 8px 12px;
+}
+
+/* Reset the generic row-action button margins inside the
+   flex status row so the Update button lines up with the
+   dropdown instead of dropping 8px lower. */
+
+.task-status-control .edit-status-button {
+    flex-shrink: 0;
+    align-self: center;
+    min-height: 38px;
+    margin: 0;
+}
+
+/* Stacking: sibling task cards paint in DOM order, so an open status
+   dropdown in one card would slide UNDER the next card. Lift whichever
+   card currently holds an open popup above its siblings. */
+
+#tasksContainer .task-card:has(.custom-select-wrapper.open) {
+    z-index: 50;
+}
+
+.task-status-control .custom-select-list {
+    min-width: 100%;
+    width: max-content;
+    max-width: 240px;
 }
 
 /* Task assignee chips share project chip theme. */

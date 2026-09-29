@@ -26,6 +26,10 @@ function enhanceDateInput(inputElement) {
 
     const trigger = document.createElement("div");
     trigger.className = "custom-date-trigger";
+    trigger.setAttribute("tabindex", "0");
+    trigger.setAttribute("role", "button");
+    trigger.setAttribute("aria-haspopup", "dialog");
+    trigger.setAttribute("aria-expanded", "false");
     trigger.innerHTML = `
         <span class="placeholder">Select date</span>
         <svg class="custom-date-icon" viewBox="0 0 24 24" fill="none"
@@ -266,12 +270,17 @@ function enhanceDateInput(inputElement) {
 
 
     function openPopup() {
+        if (typeof window.closeAllCustomPopups === "function") {
+            window.closeAllCustomPopups(wrapper);
+        }
         wrapper.classList.add("open");
+        trigger.setAttribute("aria-expanded", "true");
         renderGrid();
     }
 
     function closePopup() {
         wrapper.classList.remove("open");
+        trigger.setAttribute("aria-expanded", "false");
     }
 
 
@@ -281,6 +290,19 @@ function enhanceDateInput(inputElement) {
 
         wrapper.classList.contains("open") ? closePopup() : openPopup();
 
+    });
+
+    trigger.addEventListener("keydown", function (event) {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            wrapper.classList.contains("open") ? closePopup() : openPopup();
+        } else if (event.key === "Escape") {
+            closePopup();
+            trigger.blur();
+        } else if (event.key === "ArrowDown") {
+            event.preventDefault();
+            if (!wrapper.classList.contains("open")) openPopup();
+        }
     });
 
 

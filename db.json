@@ -61,7 +61,7 @@
       "id": "sA6M9JGYGXE"
     },
     {
-      "name": "Vinakay",
+      "name": "Vinayak",
       "email": "vin@gmail.com",
       "role": "employee",
       "phone": "1234567899",
@@ -124,7 +124,7 @@
       "projectId": "IqAKQZ-x3jc",
       "assignedTo": "2",
       "priority": "low",
-      "status": "pending",
+      "status": "completed",
       "dueDate": "2026-09-29",
       "id": "zWmkqW04_uc",
       "assignedEmployees": [

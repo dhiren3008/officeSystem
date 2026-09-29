@@ -255,7 +255,13 @@ document.getElementById("taskMembersTrigger")?.addEventListener("click", functio
 
     event.stopPropagation();
 
-    document.getElementById("taskMembersPicker")?.classList.toggle("open");
+    const picker = document.getElementById("taskMembersPicker");
+
+    if (picker && !picker.classList.contains("open") && typeof window.closeAllCustomPopups === "function") {
+        window.closeAllCustomPopups(picker);
+    }
+
+    picker?.classList.toggle("open");
 
 });
 
